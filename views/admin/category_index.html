@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+
+<ol class="am-breadcrumb" style="font-size: 18px">
+    <li><a href="/" style="color: red;"><img src="/public/images/index.png" style="height: 20px;width: 20px;">管理首页</a></li>
+    <span>/</span>
+    <li class="am-active">分类列表</li>
+</ol>
+<h3>分类列表</h3>
+
+    <div class="am-scrollable-horizontal">
+
+        <table class="am-table am-table-bordered am-table-striped am-text-nowrap">
+            <tr>
+                <th>ID</th>
+                <th>分类名称</th>
+                <th>操作</th>
+            </tr>
+
+            {% for category in categories %}
+            <tr>
+                <td>{{category._id.toString()}}</td>
+                <td>{{category.name}}</td>
+                <td>
+                    <a href="/admin/category/edit?id={{category._id.toString()}}" class="am-btn am-btn-success">修改</a>
+                    <a href="/admin/category/delete?id={{category._id.toString()}}" class="am-btn am-btn-danger">删除</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% include 'category_page.html' %}
+
+{% endblock %}

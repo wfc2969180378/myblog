@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+
+<ol class="am-breadcrumb" style="font-size: 18px">
+    <li><a href="/" style="color: red;"><img src="/public/images/index.png" style="height: 20px;width: 20px;">管理首页</a></li>
+    <span>/</span>
+    <li class="am-active">分类添加</li>
+</ol>
+<h3>分类添加</h3>
+
+<form role="form" method="post">
+    <div class="form-group">
+        <label for="name">分类名称：</label>
+        <input type="text" class="form-control" id="name" placeholder="请输入分类名称" name="name">
+    </div>
+    <button type="submit"  class="am-btn am-btn-primary" style="width: 100%;">提交</button>
+</form>
+
+{% endblock %}

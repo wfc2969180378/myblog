@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<section>
+    <figure id="full_feature" class="swipslider">
+        <ul class="sw-slides">
+            <li class="sw-slide">
+                <img src="/public/images/banner1.jpg" alt="Concept for children game">
+            </li>
+            <li class="sw-slide">
+                <img src="/public/images/banner2%20.jpg" alt="Concept for children game">
+            </li>
+            <li class="sw-slide">
+                <img src="/public/images/banner3.jpg" alt="Concept for children game">
+            </li>
+        </ul>
+    </figure>
+</section>
+<div data-am-widget="intro"
+     class="am-intro am-cf am-intro-default"
+>
+    <div class="am-intro-hd">
+        <h2 class="am-intro-title" style="padding-top: 12px;">你好{{userInfo.username}}!</h2>
+
+    </div>
+
+    <div class="am-g am-intro-bd">
+        <!--<div-->
+                <!--class="am-intro-left am-u-sm-5"><img src="http://s.amazeui.org/assets/2.x/i/cpts/intro/WP_Cortana_China.png" alt="小娜" /></div>-->
+        <div
+                class="am-intro-right am-u-sm-12"><p>欢迎进入沸超的博客后台管理！</p></div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

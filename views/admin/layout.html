@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/x-icon" href="/public/images/logo.png"/>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/public/css/bootstrap-theme.min.css" type="text/css" />
+    <link href="/public/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/swipeslider.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/public/css/amazeui.css">
+    <script src="/public/js/jquery-1.12.4.min.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/amazeui.min.js"></script>
+    <style type="text/css">
+        ::-webkit-scrollbar-thumb:horizontal { /*水平滚动条的样式*/
+            width: 4px;
+            background-color: #CCCCCC;
+            -webkit-border-radius: 6px;
+        }
+        ::-webkit-scrollbar-track-piece {
+            background-color: #fff; /*滚动条的背景颜色*/
+            -webkit-border-radius: 0; /*滚动条的圆角宽度*/
+        }
+        ::-webkit-scrollbar {
+            width: 10px; /*滚动条的宽度*/
+            height: 8px; /*滚动条的高度*/
+        }
+        ::-webkit-scrollbar-thumb:vertical { /*垂直滚动条的样式*/
+            height: 50px;
+            background-color: #999;
+            -webkit-border-radius: 4px;
+            outline: 2px solid #fff;
+            outline-offset: -2px;
+            border: 2px solid #fff;
+        }
+        ::-webkit-scrollbar-thumb:hover { /*滚动条的hover样式*/
+            height: 50px;
+            background-color: #9f9f9f;
+            -webkit-border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body style="overflow: auto;height: 100%;">
+
+<!--顶部导航-->
+<header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
+    <div class="am-container">
+        <h1 class="am-topbar-brand">
+            <a class="navbar-brand" href="/admin">后台管理</a>
+        </h1>
+
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+                data-am-collapse="{target: '#doc-topbar-collapse-4'}" style="background: #0E90D2;border: none;"><span class="am-sr-only">导航切换</span> <span
+                class="" ><img src="/public/images/menu.png" style="height: 18px;width: 18px;"></span></button>
+
+        <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse-4">
+            <ul class="am-nav am-nav-pills am-topbar-nav">
+                <li class="am-active"><a href="http://localhost:8081/#/">前台首页</a></li>
+                <li class="am-active"><a href="/admin">后台首页</a></li>
+                <li class="am-dropdown" data-am-dropdown>
+                    <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                        分类管理 <span class=""><img src="/public/images/down.png" style="height: 15px;width: 15px;"></span></span>
+                    </a>
+                    <ul class="am-dropdown-content">
+                        <li><a href="/admin/category">分类首页</a></li>
+                        <li><a href="/admin/category/add">添加分类</a></li>
+                    </ul>
+                </li>
+                <li class="am-dropdown" data-am-dropdown>
+                    <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                        内容管理 <span class=""><img src="/public/images/down.png" style="height: 15px;width: 15px;"></span></span>
+                    </a>
+                    <ul class="am-dropdown-content">
+                        <li><a href="/admin/content">内容首页</a></li>
+                        <li><a href="/admin/content/add">添加内容</a></li>
+                    </ul>
+                </li>
+                <li class="am-dropdown" data-am-dropdown>
+                    <a href="/admin/user">用户管理</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+
+<div class="container-fluid">
+    {%block main%}{%endblock%}
+</div>
+
+<div data-am-widget="gotop" class="am-gotop am-gotop-fixed" >
+    <a href="#top" title="">
+        <img class="am-gotop-icon-custom" src="http://amazeui.b0.upaiyun.com/assets/i/cpts/gotop/goTop.gif" />
+    </a>
+</div>
+
+
+<div id="am-footer-modal"
+     class="am-modal am-modal-no-btn am-switch-mode-m am-switch-mode-m-default">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd am-modal-footer-hd">
+            <a href="javascript:void(0)" data-dismiss="modal" class="am-close am-close-spin " data-am-modal-close style="color: red;font-weight: bold;font-size: 24px;">&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            您正在浏览的是
+
+            <span class="am-switch-mode-owner">
+          {{userInfo.username}}
+        </span>
+
+            <span class="am-switch-mode-slogan">
+              为您当前手机订制的移动网站。
+        </span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/public/js/swipeslider.min.js"></script>
+<script type="text/javascript" src="/public/js/slideout.min.js"></script>
+
+
+<script type="text/javascript">
+    $(window).load(function() {
+        $('#full_feature').swipeslider();
+        $('#content_slider').swipeslider({
+            transitionDuration: 600,
+            autoPlayTimeout: 10000,
+            sliderHeight: '300px'
+        });
+        $('#responsiveness').swipeslider();
+        $('#customizability').swipeslider({
+            transitionDuration: 1500,
+            autoPlayTimeout: 4000,
+            timingFunction: 'cubic-bezier(0.38, 0.96, 0.7, 0.07)',
+            sliderHeight: '30%'});
+    });
+</script>
+</body>
+</html>

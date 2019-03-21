@@ -1,0 +1,134 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+
+<div class="rankBox">
+    <article data-am-widget="paragraph"
+             class="am-paragraph am-paragraph-default"
+
+             data-am-paragraph="{ tableScrollable: true, pureview: true }">
+        <div class="am-article-hd am-article-divider">
+            <h1 class="am-article-title" style="font-size: 26px;">{{content.title}}</h1>
+            <p class="am-article-meta" style="font-size: 16px;">
+                <article data-am-widget="paragraph"
+                         class="am-paragraph am-paragraph-default"
+
+                         data-am-paragraph="{ tableScrollable: true, pureview: true }"
+                    style="font-size: 16px;"
+                >
+                    作者：<span class="colInfo">admin</span>&nbsp;&nbsp;
+                    时间：<span class="colInfo">{{content.addTime|date('Y年m月d日 H:i:s', -8*60)}}</span>&nbsp;&nbsp;
+                    阅读：<span class="colInfo">{{content.views}}</span>&nbsp;&nbsp;
+                    字数：<span class="colInfo">{{content.content.length}}</span>&nbsp;&nbsp;
+                    评论：<span class="colInfo">{{content.comments.length}}</span>&nbsp;&nbsp;
+                   <div style="margin-top: 10px;margin-bottom: -18px">
+                       <ul id="comments_list">
+                           <li class="comments">
+                               <div class="com_bottom">
+                                <span class="useful">
+                                    {% if content.supports.length < 0 %}
+                                    你还没有点赞呢？
+                                    {%else%}
+                                    点赞  <span class="like_num" id="supports">{{content.supports}}</span>有用
+                                    {%endif%}
+                                 </span>
+                               </div>
+                           </li>
+                       </ul>
+                       <a href="/" style="color: red;text-align: right">返回首页</a>
+                   </div>
+                </article>
+
+            </p>
+        </div>
+
+        <div class="am-article-bd am-article-divider">
+            <p class="paragraph-default-p" style="border-color:rgba(255 , 0 , 0 , .7);    /*.7是alpha透明度为70%的意思*/
+        background-color:rgba( 100 , 120 , 60 , .2 );border-color:rgba(255 , 0 , 0 , .7);
+        text-indent:2em; word-wrap: break-word;padding: 20px; line-height:25px;">
+                <span>{{content.content}}</span>
+            </p>
+        </div>
+    </article>
+
+    <div class=" ">
+        <div data-am-widget="titlebar" class="am-titlebar am-titlebar-multi"
+        style="  margin-bottom: 10px;border-bottom: none"
+        >
+            <h2 class="am-titlebar-title" style="padding-right: 10px;
+
+            ">
+                <p style="">评论</p>
+            </h2>
+
+            <nav class="am-titlebar-nav">
+                <span class="em" style="font-size: 14px;padding-right: 10px;">一共有 <em id="messageCount">0</em> 条评论</span>
+            </nav>
+        </div>
+        {% if userInfo._id %}
+        <article class="am-comment" style="padding: 10px">
+            <div class="am-comment-main">
+                <header class="am-comment-hd">
+                    <!--<h3 class="am-comment-title">评论标题</h3>-->
+                    <div class="am-comment-meta">
+                        <a href="#link-to-user" class="am-comment-author">{{userInfo.name}}</a>
+                        <textarea  required class="am-comment-meta" id="messageContent" style="border:0;border-radius:5px;
+                     background-color:rgba(241,241,241,.98);width: 80%;
+                    height: 200px;padding: 10px; white-space: pre;overflow: auto;color: #3c3c3c;"
+                                   rows="15" cols="5" placeholder="请输入您的评论内容"
+                        ></textarea>
+                    </div>
+                </header>
+
+                <div class="am-comment-bd" style="height: 45px;line-height: 45px;">
+                    <input type="hidden" id="contentId" value="{{content.id}}">
+                </div>
+                <button id="messageBtn" class="am-btn am-btn-success am-btn-sm"
+                        style="position: absolute;right: 15px;bottom: 7px;width: 80px;
+                    border-radius: 3px"
+                >发表评论</button>
+            </div>
+        </article>
+
+        </p>
+        {%else%}
+        <p class="bgDanger" style="line-height: 30px;padding: 5px;margin-top: 25px;">你还没有登录，请先登录！</p>
+        {%endif%}
+
+        <div class="messageList">
+
+        </div>
+
+        <div class="pager">
+            <ul class="clear">
+                <li class="previous">
+                    <a href="">上一页</a>
+                </li>
+                <li></li>
+                <li class="next">
+                    <a href="">下一页</a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+        <!--<div class="messageList">-->
+        <!--<div class="messageBox"><p>还没有留言</p></div>-->
+        <!--</div>-->
+
+        <!--<div class="messageList" style="display: block;">-->
+        <!--<div class="messageBox">-->
+        <!--<p class="name clear"><span class="fl">admin</span><span class="fr">2016年07月29日 17:24:01</span></p><p>哈哈</p>-->
+        <!--</div>-->
+        <!--</div>-->
+
+    </div>
+</div>
+
+
+
+<script src="/public/js/comment.js"></script>
+{%endblock%}

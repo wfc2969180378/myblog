@@ -1,0 +1,62 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+    {%for content in contents%}
+<section class="am-panel am-panel-primary rankBox">
+    <div class="am-panel-hd">  <h1 style="font-size: 16px;">{{content.title}}</h1></div>
+    <main class="am-panel-bd">
+        <p class="am-article-meta">
+            <article data-am-widget="paragraph"
+                     class="am-paragraph am-paragraph-default"
+                     data-am-paragraph="{ tableScrollable: true, pureview: true }"
+                     style="font-size: 16px;margin-top: -30px;"
+            >
+            <p class="colDefault"  style="font-size: 16px;">
+                作者：<span class="colInfo">{{content.user.name}}</span> &nbsp;&nbsp;
+                时间：<span class="colInfo">{{content.addTime|date('Y年m月d日 H:i:s', -8*60)}}</span>
+                阅读：<span class="colInfo">{{content.views}}</span>&nbsp;&nbsp;
+                评论：<span class="colInfo">{{content.comments.length}}</span>&nbsp;&nbsp;
+                点赞量：<span class="colInfo">{{content.supports+1}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                字数：<span class="colInfo">{{content.content.length}}</span>&nbsp;&nbsp;
+            </p>
+            <dfn><p  style="font-size: 14px;">{{content.description}}</p></dfn>
+        </article>
+
+        </p>
+    </main>
+    <footer class="am-panel-footer"> <div class="function" style="text-align: right"><a href="/view?contentid={{content.id}}" class="am-btn am-btn-primary" style="color: #fff;">阅读全文</a></div></footer>
+</section>
+    {%endfor%}
+
+    <div class="pager">
+        <ul class="clear">
+
+            <li class="previous">
+
+                {%if page <= 1%}
+                <span>没有上一页了</span>
+                {%else%}
+                <a href="/?category={{category}}&page={{page-1}}">上一页</a>
+                {%endif%}
+
+            </li>
+
+            {%if pages > 0%}
+            <li>
+                <strong>{{page}} / {{pages}}</strong>
+            </li>
+            {%endif%}
+
+            <li class="next">
+
+                {%if page >= pages%}
+                <span>没有下一页了</span>
+                {%else%}
+                <a href="/?category={{category}}&page={{page+1}}">下一页</a>
+                {%endif%}
+
+            </li>
+
+        </ul>
+    </div>
+{%endblock%}
