@@ -3,7 +3,8 @@
 {% block main %}
 
 <ol class="am-breadcrumb" style="font-size: 18px">
-    <li><a href="/" style="color: red;"><img src="/public/images/index.png" style="height: 20px;width: 20px;color: red;">管理首页</a></li>
+    <li><a href="/" style="color: red;"><img src="/public/images/index.png"
+                                             style="height: 20px;width: 20px;color: red;">管理首页</a></li>
     <span>/</span>
     <li class="am-active">内容列表</li>
 </ol>
@@ -19,7 +20,7 @@
             <th>添加时间</th>
             <th>阅读量</th>
             <th>评论量</th>
-            <th>点赞量</th>
+            <th>点赞</th>
             <th>字数</th>
             <th>操作</th>
         </tr>
@@ -43,7 +44,6 @@
         {% endfor %}
     </table>
 </div>
-
 
 
 {% include 'content_page.html' %}

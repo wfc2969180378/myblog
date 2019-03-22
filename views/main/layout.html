@@ -22,6 +22,7 @@
     <script src="/public/js/bscroll.min.js"></script>
     <script type="application/javascript">
         let rankBox = document.querySelector('.rankBox');
+
         function betterS() {
             let scroll = new BScroll(rankBox);
         }
@@ -30,10 +31,12 @@
         .am-u-sm-9 > input {
             font-size: 14px !important;
         }
+
         .userInfo-p {
             font-size: 16px;
         }
-        .com_bottom .useful{
+
+        .com_bottom .useful {
             float: right;
             font-size: 10px;
             padding: 0 15px;
@@ -43,6 +46,7 @@
             color: #999999;
             border: 1px solid #999999;
         }
+
         .com_bottom .useful.usefulClick {
             color: #F32D27;
             border: 1px solid #F32D27;
@@ -57,14 +61,14 @@
 <header class="am-topbar am-topbar-inverse " style="height: 100%;margin-bottom: -10px;">
     <div class="am-container">
         <h1 class="am-topbar-brand">
-            <!--<img src="/public/images/logo.png" style="height: 60px;width: 60px;position: absolute;left: 0" alt="">-->
             <a class="navbar-brand" href="/">
                 沸超的博客
             </a>
         </h1>
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
-                data-am-collapse="{target: '#doc-topbar-collapse-4'}" style="background: #0E90D2;border: none;"><span class="am-sr-only">导航切换</span> <span
-                class="" ><img src="/public/images/menu.png" style="height: 18px;width: 18px;"></span></button>
+                data-am-collapse="{target: '#doc-topbar-collapse-4'}"
+                style="border: none;"><span class="am-sr-only">导航切换</span> <span
+                class=""><img src="/public/images/menu.png" style="height: 18px;width: 18px;"></span></button>
         <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse-4">
             <ul class="am-nav am-nav-pills am-topbar-nav">
                 <li class="am-active">{%if category == ''%}
@@ -74,17 +78,17 @@
                     {%endif%}
                 </li>
 
-                    {%for cate in categories%}
-                    {%if category == cate.id%}
+                {%for cate in categories%}
+                {%if category == cate.id%}
                 <li class="am-dropdown">
                     <a href="/?category={{cate.id}}" class="focus">{{cate.name}}</a>
                 </li>
-                    {%else%}
+                {%else%}
                 <li class="am-dropdown">
                     <a href="/?category={{cate.id}}">{{cate.name}}</a>
                 </li>
-                    {%endif%}
-                    {%endfor%}
+                {%endif%}
+                {%endfor%}
 
 
             </ul>
@@ -97,17 +101,20 @@
     <figure id="full_feature" class="swipslider">
         <ul class="sw-slides">
             <li class="sw-slide">
-                <figure data-am-widget="figure" class="am am-figure am-figure-default"   data-am-figure="{  pureview: 'true' }">
+                <figure data-am-widget="figure" class="am am-figure am-figure-default"
+                        data-am-figure="{  pureview: 'true' }">
                     <img src="/public/images/banner1.jpg" data-rel="/public/images/banner1.jpg" alt="banner1"/>
                 </figure>
             </li>
             <li class="sw-slide">
-                <figure data-am-widget="figure" class="am am-figure am-figure-default"   data-am-figure="{  pureview: 'true' }">
+                <figure data-am-widget="figure" class="am am-figure am-figure-default"
+                        data-am-figure="{  pureview: 'true' }">
                     <img src="/public/images/banner2%20.jpg" data-rel="/public/images/banner2%20.jpg" alt="banner2"/>
                 </figure>
             </li>
             <li class="sw-slide">
-                <figure data-am-widget="figure" class="am am-figure am-figure-default"   data-am-figure="{  pureview: 'true' }">
+                <figure data-am-widget="figure" class="am am-figure am-figure-default"
+                        data-am-figure="{  pureview: 'true' }">
                     <img src="/public/images/banner3.jpg" data-rel="/public/images/banner3.jpg" alt="banner3"/>
                 </figure>
             </li>
@@ -135,12 +142,14 @@
 <div class="am-modal am-modal-no-btn am-animation-fade" tabindex="-1" id="my-popup">
     <div class="am-modal-dialog" style="position: absolute;top: 0%;left: 0;width: 100%;background: #eeeeee;">
         <div class="am-modal-hd">
-            <a href="javascript:;" title="关闭" class="close">×</a>
+            <a href="javascript:;" title="关闭" class="close">
+                关闭
+            </a>
             {% if userInfo._id %}
-                <h3 style="color: red;">欢迎来到沸超的博客系统！</h3>
+            <h3 style="color: red;">欢迎来到沸超的博客系统！</h3>
             </a>
             {%else%}
-                 <h3 style="color: red;"></h3>
+            <h3 style="color: red;"></h3>
             {%endif%}
             <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close style="
             font-size: 26px;font-weight: bold;
@@ -150,40 +159,54 @@
             <div class="theme-popbod dform" style="display: block;">
 
                 {% if userInfo._id %}
-                <div  id="userInfo" style="border: 1px solid #ccc;padding: 50px;position: absolute;top: 200px;left: 50px;">
-                    <h3 style="font-size: 22px;padding-bottom: 15px;">用户信息</h3>
-                    <p class="userInfo-p"><span class="colDark" style="color: red !important;">{{userInfo.username}}</span></p>
+                <div id="userInfo"
+                    class="login_bg"  >
+                    <div style="position: absolute;top: 200px;left: 50%;transform: translateX(-50%)">
+                       <h3 style="font-size: 22px;padding-bottom: 15px;">用户信息</h3>
+                       <p class="userInfo-p"><span class="colDark"
+                                                   style="color: red !important;">{{userInfo.username}}</span></p>
 
-                    {% if userInfo.isAdmin %}
-                    <p class="userInfo-p">
-                        <span class="colDanger">你好，管理员！</span>
-                        <a href="/admin" style="color: blue;">进入管理</a>
-                    </p>
-                    {% else %}
-                    <p class="userInfo-p"><span class="colDanger">你好，欢迎光临我的博客！</span></p>
-                    {% endif %}
+                       {% if userInfo.isAdmin %}
+                       <p class="userInfo-p">
+                           <span class="colDanger">你好，管理员！</span>
+                           <a href="/admin" style="color: blue;">进入管理</a>
+                       </p>
+                       {% else %}
+                       <p class="userInfo-p"><span class="colDanger">你好，欢迎光临我的博客！</span></p>
+                       {% endif %}
 
-                    <p class="userInfo-p"><span class="colDark"><a href="javascript:;" style="color: red" id="logout">退出</a></span></p>
+                       <p class="userInfo-p"><span class="colDark"><a href="javascript:;" style="color: red"
+                                                                      id="logout">退出</a></span></p>
+                   </div>
                 </div>
                 {% else %}
                 <div id="loginBox">
                     <div class="login_bg"></div>
-                    <div class="am-form am-form-horizontal" data-am-validator style="position: absolute;top: 200px;left: 50px;">
+                    <div class="am-form am-form-horizontal" data-am-validator
+                         style="position: absolute;top: 200px;left: 50px;">
                         <fieldset>
                             <div class="am-form-group">
-                                <label class="am-u-sm-3 am-form-label" for="login_username"><img src="../../public/images/un-icon.png" style="width: 20px;height: 20px;"></label>
+                                <label class="am-u-sm-3 am-form-label" for="login_username"><img
+                                        src="../../public/images/un-icon.png" style="width: 20px;height: 20px;"></label>
                                 <div class="am-u-sm-9">
-                                    <input type="text" class="am-form-field am-radius am-bor"   name="username" id="login_username" minlength="3"  maxlength="15" placeholder="请输入您的账号" required/>
+                                    <input type="text" class="am-form-field am-radius am-bor" name="username"
+                                           id="login_username" minlength="3" maxlength="15" placeholder="请输入您的账号"
+                                           required/>
                                 </div>
                             </div>
                             <div class="am-form-group">
-                                <label class="am-u-sm-3 am-form-label" for="login_password" required><img src="../../public/images/pwd-icon.png" style="width: 25px;height: 25px;"></label>
+                                <label class="am-u-sm-3 am-form-label" for="login_password" required><img
+                                        src="../../public/images/pwd-icon.png"
+                                        style="width: 25px;height: 25px;"></label>
                                 <div class="am-u-sm-9">
-                                    <input type="password" class="am-form-field am-radius am-bor"  name="password" id="login_password" placeholder="请输入您的密码" required/>
+                                    <input type="password" class="am-form-field am-radius am-bor" name="password"
+                                           id="login_password" placeholder="请输入您的密码" required/>
                                 </div>
                             </div>
-                            <button class="am-btn am-btn-secondary btn-login" style="width: 90%;" type="submit">登 录</button>
-                           <p class="textRight"  style="margin-top: 5px">还没注册？<a href="javascript:;" class="colMint">马上注册</a>　</p>
+                            <button class="am-btn am-btn-secondary btn-login" style="width: 90%;" type="submit">登 录
+                            </button>
+                            <p class="textRight" style="margin-top: 5px">还没注册？<a href="javascript:;" class="colMint">马上注册</a>　
+                            </p>
                             <p class="colWarning textCenter"></p>
 
                         </fieldset>
@@ -192,41 +215,57 @@
 
                 <div id="registerBox" style="display: none;">
                     <div class="login_bg"></div>
-                    <div class="am-form am-form-horizontal" data-am-validator style="position: absolute;top: 200px;left: 50px;">
+                    <div class="am-form am-form-horizontal" data-am-validator
+                         style="position: absolute;top: 200px;left: 50px;">
                         <fieldset>
                             <div class="am-form-group">
-                                <label class="am-u-sm-3 am-form-label" for="register_username"><img src="../../public/images/un-icon.png" style="width: 20px;height: 20px;"></label>
+                                <label class="am-u-sm-3 am-form-label" for="register_username"><img
+                                        src="../../public/images/un-icon.png" style="width: 20px;height: 20px;"></label>
                                 <div class="am-u-sm-9">
-                                    <input type="text" name="username" class="am-bor" id="register_username" minlength="3" placeholder="请输入您的账号" required/>
+                                    <input type="text" name="username" class="am-bor" id="register_username"
+                                           minlength="3" placeholder="请输入您的账号" required/>
                                 </div>
                             </div>
 
                             <div class="am-form-group">
-                                <label class="am-u-sm-3 am-form-label" for="register_name"><img src="../../public/images/name-icon.png" style="width: 20px;height: 20px;"></label>
+                                <label class="am-u-sm-3 am-form-label" for="register_name"><img
+                                        src="../../public/images/name-icon.png"
+                                        style="width: 20px;height: 20px;"></label>
                                 <div class="am-u-sm-9">
-                                    <input type="text"  name="name" class="am-bor"  id="register_name" placeholder="请输入您的姓名" required/>
+                                    <input type="text" name="name" class="am-bor" id="register_name"
+                                           placeholder="请输入您的姓名" required/>
                                 </div>
                             </div>
                             <div class="am-form-group">
-                                <label class="am-u-sm-3 am-form-label" for="register_phone"><img src="../../public/images/phone-icon.png" style="width: 20px;height: 20px;"></label>
+                                <label class="am-u-sm-3 am-form-label" for="register_phone"><img
+                                        src="../../public/images/phone-icon.png"
+                                        style="width: 20px;height: 20px;"></label>
                                 <div class="am-u-sm-9">
-                                    <input type="text"  name="phone" class="am-bor" id="register_phone" minlength="1" maxlength="11" placeholder="请输入您的手机号码" required/>
+                                    <input type="text" name="phone" class="am-bor" id="register_phone" minlength="1"
+                                           maxlength="11" placeholder="请输入您的手机号码" required/>
                                 </div>
                             </div>
                             <div class="am-form-group">
-                                <label class="am-u-sm-3 am-form-label" for="register_password"><img src="../../public/images/pwd-icon.png" style="width: 20px;height: 20px;"></label>
+                                <label class="am-u-sm-3 am-form-label" for="register_password"><img
+                                        src="../../public/images/pwd-icon.png"
+                                        style="width: 20px;height: 20px;"></label>
                                 <div class="am-u-sm-9">
-                                    <input type="password"  name="password" class="am-bor" id="register_password" placeholder="请输入您的密码" required/>
+                                    <input type="password" name="password" class="am-bor" id="register_password"
+                                           placeholder="请输入您的密码" required/>
                                 </div>
                             </div>
                             <div class="am-form-group">
-                                <label class="am-u-sm-3 am-form-label" for="register_repassword"><img src="../../public/images/confirm-icon.png" style="width: 20px;height: 20px;"></label>
+                                <label class="am-u-sm-3 am-form-label" for="register_repassword"><img
+                                        src="../../public/images/confirm-icon.png"
+                                        style="width: 20px;height: 20px;"></label>
                                 <div class="am-u-sm-9">
-                                    <input type="password"  name="repassword" class="am-bor"  id="register_repassword" placeholder="请确认密码" required />
+                                    <input type="password" name="repassword" class="am-bor" id="register_repassword"
+                                           placeholder="请确认密码" required/>
                                 </div>
                             </div>
                             <button class="am-btn am-btn-secondary btn-login" style="width: 90%;">注 册</button>
-                            <p class="textRight"  style="margin-top: 5px">已有账号？<a href="javascript:;" class="colMint">马上登录</a></p>
+                            <p class="textRight" style="margin-top: 5px">已有账号？<a href="javascript:;" class="colMint">马上登录</a>
+                            </p>
                             <p class="colWarning textCenter"></p>
                         </fieldset>
                     </div>
@@ -243,18 +282,38 @@
     </div>
 </main>
 
-<div class="copyright textCenter">Copyright © 2969180378@qq.com 版权所有 </div>
 
-<div data-am-widget="gotop" class="am-gotop am-gotop-fixed" >
+<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default"
+     id="">
+    <ul class="am-navbar-nav am-cf am-avg-sm-4">
+        <li >
+            <a href="http://localhost:8081/" class="">
+                <img src="../../public/images/index_icon.png" alt="首页"/>
+                <span class="am-navbar-label">首页</span>
+            </a>
+        </li>
+        <li >
+            <a href="http://localhost:8081/admin" class="">
+                <img src="../../public/images/my_icon.png" alt="我的"/>
+                <span class="am-navbar-label">我的</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="copyright textCenter">Copyright © 2969180378@qq.com 版权所有</div>
+
+<div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
     <a href="#top" title="">
-        <img class="am-gotop-icon-custom" src="http://amazeui.b0.upaiyun.com/assets/i/cpts/gotop/goTop.gif" />
+        <img class="am-gotop-icon-custom" src="http://amazeui.b0.upaiyun.com/assets/i/cpts/gotop/goTop.gif"/>
     </a>
 </div>
 
 <script type="text/javascript" src="/public/js/swipeslider.min.js"></script>
 
 <script type="text/javascript">
-    $(window).load( () => {
+    $(window).load(() => {
         $('#full_feature').swipeslider();
         $('#content_slider').swipeslider({
             transitionDuration: 600,
@@ -266,17 +325,18 @@
             transitionDuration: 1500,
             autoPlayTimeout: 4000,
             timingFunction: 'cubic-bezier(0.38, 0.96, 0.7, 0.07)',
-            sliderHeight: '30%'});
+            sliderHeight: '30%'
+        });
     });
 </script>
 <script type="text/javascript">
-    $("#comments_list li.comments .useful").click(function(){
+    $("#comments_list li.comments .useful").click(function () {
         let $likeNum = $(this).find('.like_num');
         let num = +$likeNum.text();
-        if(!$(this).hasClass('usefulClick')){
+        if (!$(this).hasClass('usefulClick')) {
             $(this).addClass('usefulClick');
             $likeNum.text(++num);
-        }else{
+        } else {
             confirm("你已经点过了");
         }
     });

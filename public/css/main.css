@@ -25,7 +25,7 @@ button {
   color: #FFF;
 }
 .bgInfo {
-  background-color: #46b9d8!important;
+  background-color: rgb(105,87,207)!important;
   color: #FFF;
 }
 .bgSuccess {
@@ -71,7 +71,7 @@ button {
   color: #579ddb !important;
 }
 .colInfo {
-  color: #46b9d8 !important;
+  color: rgb(105,87,207) !important;
 }
 .colSuccess {
   color: #97c664 !important;

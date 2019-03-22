@@ -14,17 +14,17 @@
                          class="am-paragraph am-paragraph-default"
 
                          data-am-paragraph="{ tableScrollable: true, pureview: true }"
-                    style="font-size: 16px;"
+                         style="font-size: 16px;"
                 >
                     作者：<span class="colInfo">admin</span>&nbsp;&nbsp;
                     时间：<span class="colInfo">{{content.addTime|date('Y年m月d日 H:i:s', -8*60)}}</span>&nbsp;&nbsp;
                     阅读：<span class="colInfo">{{content.views}}</span>&nbsp;&nbsp;
                     字数：<span class="colInfo">{{content.content.length}}</span>&nbsp;&nbsp;
                     评论：<span class="colInfo">{{content.comments.length}}</span>&nbsp;&nbsp;
-                   <div style="margin-top: 10px;margin-bottom: -18px">
-                       <ul id="comments_list">
-                           <li class="comments">
-                               <div class="com_bottom">
+                    <div style="margin-top: 10px;margin-bottom: -18px">
+                        <ul id="comments_list">
+                            <li class="comments">
+                                <div class="com_bottom">
                                 <span class="useful">
                                     {% if content.supports.length < 0 %}
                                     你还没有点赞呢？
@@ -32,11 +32,11 @@
                                     点赞  <span class="like_num" id="supports">{{content.supports}}</span>有用
                                     {%endif%}
                                  </span>
-                               </div>
-                           </li>
-                       </ul>
-                       <a href="/" style="color: red;text-align: right">返回首页</a>
-                   </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="/" style="color: red;text-align: right">返回首页</a>
+                    </div>
                 </article>
 
             </p>
@@ -53,7 +53,7 @@
 
     <div class=" ">
         <div data-am-widget="titlebar" class="am-titlebar am-titlebar-multi"
-        style="  margin-bottom: 10px;border-bottom: none"
+             style="  margin-bottom: 10px;border-bottom: none"
         >
             <h2 class="am-titlebar-title" style="padding-right: 10px;
 
@@ -62,7 +62,8 @@
             </h2>
 
             <nav class="am-titlebar-nav">
-                <span class="em" style="font-size: 14px;padding-right: 10px;">一共有 <em id="messageCount">0</em> 条评论</span>
+                <span class="em" style="font-size: 14px;padding-right: 10px;">一共有 <em
+                        id="messageCount">0</em> 条评论</span>
             </nav>
         </div>
         {% if userInfo._id %}
@@ -72,27 +73,36 @@
                     <!--<h3 class="am-comment-title">评论标题</h3>-->
                     <div class="am-comment-meta">
                         <a href="#link-to-user" class="am-comment-author">{{userInfo.name}}</a>
-                        <textarea  required class="am-comment-meta" id="messageContent" style="border:0;border-radius:5px;
-                     background-color:rgba(241,241,241,.98);width: 80%;
+                        <textarea required class="am-comment-meta" id="messageContent" style="border:0;border-radius:5px;
+                     background-color: rgba(255,255,255,.98);width: 100%;
                     height: 200px;padding: 10px; white-space: pre;overflow: auto;color: #3c3c3c;"
-                                   rows="15" cols="5" placeholder="请输入您的评论内容"
+                                  rows="15" cols="5" placeholder="请输入您的评论内容"
                         ></textarea>
+
                     </div>
                 </header>
-
+                <div id="contentLength"
+                     style="position: absolute;right: 15px;bottom: 65px;"
+                >
+                    <span>0/140</span>
+                </div>
                 <div class="am-comment-bd" style="height: 45px;line-height: 45px;">
                     <input type="hidden" id="contentId" value="{{content.id}}">
                 </div>
                 <button id="messageBtn" class="am-btn am-btn-success am-btn-sm"
-                        style="position: absolute;right: 15px;bottom: 7px;width: 80px;
+                        style="position: absolute;left: 15px;bottom: 6px;width: 80px;
                     border-radius: 3px"
-                >发表评论</button>
+                >畅所欲言
+                </button>
             </div>
         </article>
 
         </p>
         {%else%}
-        <p class="bgDanger" style="line-height: 30px;padding: 5px;margin-top: 25px;">你还没有登录，请先登录！</p>
+        <p class="bgDanger" style="line-height: 30px;padding: 5px;margin-top: 25px;">
+            你还没有登录，请先登录！
+            <a href="/" style="color: blueviolet">返回首页</a>
+        </p>
         {%endif%}
 
         <div class="messageList">
@@ -112,9 +122,6 @@
         </div>
 
 
-
-
-
         <!--<div class="messageList">-->
         <!--<div class="messageBox"><p>还没有留言</p></div>-->
         <!--</div>-->
@@ -129,6 +136,30 @@
 </div>
 
 
-
 <script src="/public/js/comment.js"></script>
+<script type="text/javascript">
+    $(function () {
+        let $messageContent = $('#messageContent');
+        let $contentLength = $('#contentLength');
+
+        $messageContent.bind('input propertychange', 'textarea', function () {
+            let curLength = $messageContent.val().trim().length;
+            console.log(curLength);
+            if (curLength > 140) {
+                let num = $messageContent.val().trim().substr(0, 140);
+                $messageContent.val(num);
+                alert('您输入的评论字数超出限制了');
+            }
+            if (curLength === 0) {
+                $contentLength.text('0 / 140');
+            } else {
+                $contentLength.text(($messageContent).val().trim().length + '/140');
+
+            }
+
+
+        });
+
+    })
+</script>
 {%endblock%}

@@ -9,13 +9,13 @@ let data;
 /*
 * 处理通用的数据
 * */
-router.use( (req, res, next) => {
+router.use((req, res, next) => {
     data = {
         userInfo: req.userInfo,
         categories: []
     }
 
-    Category.find().then( (categories) => {
+    Category.find().then((categories) => {
         data.categories = categories;
         next();
     });
@@ -37,15 +37,15 @@ router.get('/', (req, res, next) => {
         where.category = data.category
     }
 
-    Content.where(where).count().then( (count) => {
+    Content.where(where).count().then((count) => {
 
         data.count = count;
         //计算总页数
         data.pages = Math.ceil(data.count / data.limit);
         //取值不能超过pages
-        data.page = Math.min( data.page, data.pages );
+        data.page = Math.min(data.page, data.pages);
         //取值不能小于1
-        data.page = Math.max( data.page, 1 );
+        data.page = Math.max(data.page, 1);
 
         let skip = (data.page - 1) * data.limit;
 
@@ -61,11 +61,11 @@ router.get('/', (req, res, next) => {
 
 router.get('/view', (req, res) => {
 
-    let contentId = req.query.contentid || '';
+    let contentId = req.query.contentId || '';
 
     Content.findOne({
         _id: contentId
-    }).then((content) =>{
+    }).then((content) => {
         data.content = content;
 
         content.views++;
@@ -76,7 +76,6 @@ router.get('/view', (req, res) => {
     });
 
 });
-
 
 
 module.exports = router;

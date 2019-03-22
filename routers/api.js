@@ -6,14 +6,14 @@ let Content = require('../models/Content');
 //统一返回格式
 let responseData;
 
-router.use( (req, res, next) =>  {
+router.use((req, res, next) => {
     responseData = {
         code: 0,
         message: ''
     }
 
     next();
-} );
+});
 
 /*
 * 用户注册
@@ -36,7 +36,7 @@ router.post('/user/register', (req, res, next) => {
     let repassword = req.body.repassword;
 
     //用户是否为空
-    if ( username === '' ) {
+    if (username === '') {
         responseData.code = 1;
         responseData.message = '用户名不能为空';
         res.json(responseData);
@@ -76,8 +76,8 @@ router.post('/user/register', (req, res, next) => {
     //用户名是否已经被注册了，如果数据库中已经存在和我们要注册的用户名同名的数据，表示该用户名已经被注册了
     User.findOne({
         username: username
-    }).then(function( userInfo ) {
-        if ( userInfo ) {
+    }).then(function (userInfo) {
+        if (userInfo) {
             //表示数据库中有该记录
             responseData.code = 4;
             responseData.message = '用户名已经被注册了';
@@ -92,7 +92,7 @@ router.post('/user/register', (req, res, next) => {
             phone: phone
         });
         return user.save();
-    }).then(function(newUserInfo) {
+    }).then(function (newUserInfo) {
         responseData.message = '注册成功';
         res.json(responseData);
     });
@@ -106,7 +106,7 @@ router.post('/user/login', (req, res) => {
     let password = req.body.password;
 
 
-    if ( username === '' || password === '') {
+    if (username === '' || password === '') {
         responseData.code = 1;
         responseData.message = '用户名和密码不能为空';
         res.json(responseData);
@@ -118,7 +118,7 @@ router.post('/user/login', (req, res) => {
         username: username,
         password: password,
 
-    }).then( (userInfo) => {
+    }).then((userInfo) => {
         if (!userInfo) {
             responseData.code = 2;
             responseData.message = '用户名或密码错误';
@@ -157,11 +157,11 @@ router.get('/user/logout', (req, res) => {
 * 获取指定文章的所有评论
 * */
 router.get('/comment', (req, res) => {
-    let contentId = req.query.contentid || '';
+    let contentId = req.query.contentId || '';
 
     Content.findOne({
         _id: contentId
-    }).then(function(content) {
+    }).then(function (content) {
         responseData.data = content.comments;
         res.json(responseData);
     })
@@ -172,7 +172,7 @@ router.get('/comment', (req, res) => {
 * */
 router.post('/comment/post', (req, res) => {
     //内容的id
-    let contentId = req.body.contentid || '';
+    let contentId = req.body.contentId || '';
     let postData = {
         username: req.userInfo.username,
         postTime: new Date(),
@@ -182,10 +182,10 @@ router.post('/comment/post', (req, res) => {
     //查询当前这篇内容的信息
     Content.findOne({
         _id: contentId
-    }).then( (content) => {
+    }).then((content) => {
         content.comments.push(postData);
         return content.save();
-    }).then( (newContent) => {
+    }).then((newContent) => {
         responseData.message = '评论成功';
         responseData.data = newContent;
         res.json(responseData);

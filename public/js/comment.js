@@ -4,15 +4,15 @@ let pages = 0;
 let comments = [];
 
 //提交评论
-$('#messageBtn').on('click', function() {
+$('#messageBtn').on('click', function () {
     $.ajax({
         type: 'POST',
         url: '/api/comment/post',
         data: {
-            contentid: $('#contentId').val(),
+            contentId: $('#contentId').val(),
             content: $('#messageContent').val()
         },
-        success: function(responseData) {
+        success: function (responseData) {
             $('#messageContent').val('');
             renderComment();
             window.location.reload();
@@ -25,15 +25,15 @@ $('#messageBtn').on('click', function() {
 $.ajax({
     url: '/api/comment',
     data: {
-        contentid: $('#contentId').val()
+        contentId: $('#contentId').val()
     },
-    success: function(responseData) {
+    success: function (responseData) {
         comments = responseData.data.reverse();
         renderComment();
     }
 });
 
-$('.pager').delegate('a', 'click', function() {
+$('.pager').delegate('a', 'click', function () {
     if ($(this).parent().hasClass('previous')) {
         page--;
     } else {
@@ -45,11 +45,11 @@ $('.pager').delegate('a', 'click', function() {
 function renderComment() {
     $('#messageCount').html(comments.length);
     pages = Math.max(Math.ceil(comments.length / pageSize), 1);
-    let start = Math.max(0, (page-1) * pageSize);
+    let start = Math.max(0, (page - 1) * pageSize);
     let end = Math.min(start + pageSize, comments.length);
 
     let $lis = $('.pager li');
-    $lis.eq(1).html( page + ' / ' +  pages);
+    $lis.eq(1).html(page + ' / ' + pages);
 
     if (page <= 1) {
         page = 1;
@@ -69,32 +69,33 @@ function renderComment() {
     } else {
         let html = '';
         for (let i = start; i < end; i++) {
-            html += '<div class="messageBox" style="border-bottom: 1px solid #3BB4F2">'+
-                '<p class="name clear"><span class="fl" style="color: #3BB4F2;">'+comments[i].username+'</span><span class="fr">'+ formatDate(comments[i].postTime) +'</span></p><p ' +
-                'style="background: #fcfcfc;padding: 10px;font-size: 14px;">'+comments[i].content+'</p>'+
+            html += '<div class="messageBox" style="border-bottom: 1px solid rgb(105,87,207)">' +
+                '<p class="name clear"><span class="fl" style="color: rgb(105,87,207);">' + comments[i].username + '</span><span class="fr">' + formatDate(comments[i].postTime) + '</span></p><p ' +
+                'style="background: #fcfcfc;padding: 10px;font-size: 14px;">' + comments[i].content + '</p>' +
                 '</div>';
         }
         $('.messageList').html(html);
     }
 
 }
+
 function formatDate(d) {
     let date1 = new Date(d);
-    let myDate =  date1.getFullYear() + '年' + (date1.getMonth()+1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + date1.getMinutes() + ':' + date1.getSeconds()
+    let myDate = date1.getFullYear() + '年' + (date1.getMonth() + 1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + date1.getMinutes() + ':' + date1.getSeconds()
 
-   /*
-   * 做一个时间的校验，如果当时分秒小于10时在前面补0
-   * */
+    /*
+    * 做一个时间的校验，如果当时分秒小于10时在前面补0
+    * */
     if (date1.getMinutes() < 10 || date1.getSeconds() < 10) {
-       if (date1.getMinutes() < 10 && date1.getSeconds() < 10) {
-           myDate = date1.getFullYear() + '年' + (date1.getMonth()+1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + '0' + date1.getMinutes() + ':' +  '0' + date1.getSeconds()
-       } else if( date1.getMinutes() < 10 ) {
-           myDate = date1.getFullYear() + '年' + (date1.getMonth()+1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':'  +  '0' + date1.getMinutes() + ':' + date1.getSeconds()
-       } else if (date1.getSeconds() < 10) {
-           myDate = date1.getFullYear() + '年' + (date1.getMonth()+1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':'  + date1.getMinutes() + ':' + '0' + date1.getSeconds()
-       }
+        if (date1.getMinutes() < 10 && date1.getSeconds() < 10) {
+            myDate = date1.getFullYear() + '年' + (date1.getMonth() + 1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + '0' + date1.getMinutes() + ':' + '0' + date1.getSeconds()
+        } else if (date1.getMinutes() < 10) {
+            myDate = date1.getFullYear() + '年' + (date1.getMonth() + 1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + '0' + date1.getMinutes() + ':' + date1.getSeconds()
+        } else if (date1.getSeconds() < 10) {
+            myDate = date1.getFullYear() + '年' + (date1.getMonth() + 1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + date1.getMinutes() + ':' + '0' + date1.getSeconds()
+        }
     } else {
-        myDate = date1.getFullYear() + '年' + (date1.getMonth()+1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + date1.getMinutes() + ':' + date1.getSeconds()
+        myDate = date1.getFullYear() + '年' + (date1.getMonth() + 1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + date1.getMinutes() + ':' + date1.getSeconds()
     }
 
     return myDate;

@@ -11,7 +11,9 @@ let responseData;
 router.use( (req, res, next) => {
     if (!req.userInfo.isAdmin) {
         //如果当前用户是非管理员
-        res.send('对不起，只有管理员才可以进入后台管理');
+        res.send('<h3 style="color: red;font-size: 24px;' +
+            'position: absolute;left:50%;top:50%;' +
+            'transform: translate(-50%,-50%); ">对不起，只有管理员才可以进入后台管理</h3>');
         return;
     }
     next();

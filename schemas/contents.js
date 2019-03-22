@@ -1,4 +1,3 @@
-
 let mongoose = require('mongoose');
 
 //内容的表结构
@@ -35,7 +34,7 @@ module.exports = new mongoose.Schema({
         default: 0
     },
 
-    // 点赞量
+    // 点赞
     supports: {
         type: Number,
         default: 0
