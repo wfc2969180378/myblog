@@ -439,7 +439,7 @@ footer .fotBox span {
   position: absolute;
   top: 0;
   left: 0;
-  height: 150px;
+  height: 180px;
   width: 100%;
   background: url("../images/login_bg1.png") no-repeat;
   background-size: 100% 100%;
@@ -448,18 +448,22 @@ footer .fotBox span {
 .am-bor {
   border: none !important;
   background: #eee;
-  border-radius: 25px;
+  width: 147px !important;
+  border-radius: 15px !important;
+  padding-left: 15px !important;
 }
 
 .btn-login {
   border-radius: 15px !important;
   background: rgb(105,87,207) !important;
   border-color: rgb(105,87,207) !important;
+  width: 100% !important;
+  margin-left: 10px !important;
 }
 
 .am-pos {
   position: absolute;
-  top: 200px;
+  top: 220px;
   left: 50%;
   transform: translateX(-50%);
 }
