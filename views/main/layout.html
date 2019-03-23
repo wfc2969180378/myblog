@@ -161,7 +161,7 @@
                 {% if userInfo._id %}
                 <div id="userInfo"
                     class="login_bg"  >
-                    <div style="position: absolute;top: 200px;left: 50%;transform: translateX(-50%)">
+                    <div class="am-pos">
                        <h3 style="font-size: 22px;padding-bottom: 15px;">用户信息</h3>
                        <p class="userInfo-p"><span class="colDark"
                                                    style="color: red !important;">{{userInfo.username}}</span></p>
@@ -182,8 +182,8 @@
                 {% else %}
                 <div id="loginBox">
                     <div class="login_bg"></div>
-                    <div class="am-form am-form-horizontal" data-am-validator
-                         style="position: absolute;top: 200px;left: 50px;">
+                    <div class="am-form am-form-horizontal am-pos" data-am-validator>
+
                         <fieldset>
                             <div class="am-form-group">
                                 <label class="am-u-sm-3 am-form-label" for="login_username"><img
@@ -215,8 +215,7 @@
 
                 <div id="registerBox" style="display: none;">
                     <div class="login_bg"></div>
-                    <div class="am-form am-form-horizontal" data-am-validator
-                         style="position: absolute;top: 200px;left: 50px;">
+                    <div class="am-form am-form-horizontal am-pos" data-am-validator>
                         <fieldset>
                             <div class="am-form-group">
                                 <label class="am-u-sm-3 am-form-label" for="register_username"><img
