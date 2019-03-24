@@ -340,27 +340,29 @@
             confirm("你已经点过了");
         }
     });
-    $(window).scroll(function () {
-        // 获取垂直滚动的距离
-        let scrollTop = $(document).scrollTop();
-        if (scrollTop >= 258) {
-            $('#header_pos').css({
-               'position': 'fixed',
-               'top': '0',
-                'height': '25px',
-                'width': '100%',
-                'display': 'block'
-            });
-            $('#doc-topbar-collapse-4').show();
-        } else {
-            $('#header_pos').css({
-                "position":"relative",
-                "top":"inherit",
-                'height': '100%',
-                'width': '100%'
-            });
-        }
-    })
+    // $(window).scroll(function () {
+    //     // 获取垂直滚动的距离
+    //     let scrollTop = $(document).scrollTop();
+    //     if (scrollTop >= 258) {
+    //         $('#header_pos').css({
+    //             'position': 'fixed',
+    //             'top': '0',
+    //             'height': '25px',
+    //             'width': '100%',
+    //             'display': 'block'
+    //         });
+    //         $('#doc-topbar-collapse-4').show();
+    //     } else {
+    //         $('#header_pos').css({
+    //             "position":"relative",
+    //             "top":"inherit",
+    //             'height': '100%',
+    //             'width': '100%'
+    //         });
+    //     }
+    // })
 </script>
+
+
 </body>
 </html>
