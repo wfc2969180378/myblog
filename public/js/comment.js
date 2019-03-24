@@ -65,7 +65,8 @@ function renderComment() {
     }
 
     if (comments.length === 0) {
-        $('.messageList').html('<div class="messageBox"><p>您还没有评论</p></div>');
+        $('.messageList').html('<div class="messageBox" style="position:  absolute;left: 50%;/' +
+            'transform:  translate;transform:  translate(-50%);"><p style="font-size: 16px;">暂无评论，点击抢沙发</p></div>');
     } else {
         let html = '';
         for (let i = start; i < end; i++) {

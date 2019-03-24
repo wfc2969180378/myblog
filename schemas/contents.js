@@ -1,9 +1,9 @@
 let mongoose = require('mongoose');
 
-//内容的表结构
+//文章的表结构
 module.exports = new mongoose.Schema({
 
-    //关联字段 - 内容分类的id
+    //关联字段 - 文章分类的id
     category: {
         //类型
         type: mongoose.Schema.Types.ObjectId,
