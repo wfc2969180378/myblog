@@ -100,64 +100,6 @@ router.get('/user/delete', (req, res) => {
 
 
 /*
-* 用户修改
-* */
-router.get('/user/edit', (req, res) => {
-
-    //获取要修改的分类的信息，并且用表单的形式展现出来
-    let id = req.query.id || '';
-
-    //获取要修改的分类信息
-    User.findOne({
-        _id: id
-    }).then( (users) =>{
-        if (!users) {
-            res.render('admin/error', {
-                userInfo: req.userInfo,
-                message: '用户信息不存在'
-            });
-        } else {
-            res.render('admin/user_edit', {
-                userInfo: req.userInfo,
-                users: users,
-            });
-        }
-    })
-
-});
-
-/*
- * 保存修改用户
- * */
-router.post('/user/edit', (req, res) => {
-    let id = req.query.id || '';
-
-    if ( req.body.name === '' ) {
-        res.render('admin/error', {
-            userInfo: req.userInfo,
-            message: '用户姓名不能为空'
-        })
-        return;
-    }
-
-    User.update({
-        _id: id
-    }, {
-        userInfo: req.userInfo,
-        username: req.username
-    }).then( () => {
-        res.render('admin/success', {
-            userInfo: req.userInfo,
-            message: '用户保存成功',
-            url: '/admin/user/edit?id=' + id
-        })
-    });
-
-});
-
-
-
-/*
 * 分类首页
 * */
 router.get('/category', (req, res) =>{
