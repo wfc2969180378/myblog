@@ -12,7 +12,7 @@ let data;
 router.use((req, res, next) => {
     data = {
         userInfo: req.userInfo,
-        categories: []
+        categories: [],
     }
 
     Category.find().then((categories) => {

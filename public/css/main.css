@@ -369,13 +369,26 @@ dfn {
   padding: 20px;
   margin-bottom: 30px;
   background: #fff;
+  position: fixed;
+  bottom: 0px;
 }
 .pager ul {
   list-style: none;
   text-align: center;
   margin: 0;
   padding: 0;
+  position: relative
 }
+.pager ul .view_center {
+  position: absolute;
+  left: 142px;
+  top: -46px;
+  font-size: 16px;
+  width: 100px;
+  color: purple;
+  font-weight: bold;
+}
+
 .pager ul li {
   display: inline;
 }
@@ -383,11 +396,40 @@ dfn {
   text-decoration: none;
   color: #333;
 }
+.pager .previous {
+  position: absolute;
+  left: 10px;
+  top: -47px;
+  width: 102px;
+}
+
 .pager .previous>a, .pager .previous>span {
     float: left;
 }
+.pager .next {
+  position: absolute;
+  left: 250px;
+  top: -48px;
+  width: 100px;
+}
+.pager .next span {
+  display: inline-block;
+  width: 102px;
+}
 .pager .next>a, .pager .next>span {
     float: right;
+}
+
+.pager .center {
+  position: absolute;
+  left: 150px;
+  top: -40px;
+  width: 105px;
+}
+.pager .center strong {
+  color: purple;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 footer {

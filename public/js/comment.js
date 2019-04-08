@@ -81,22 +81,25 @@ function renderComment() {
 }
 
 function formatDate(d) {
-    let date1 = new Date(d);
-    let myDate = date1.getFullYear() + '年' + (date1.getMonth() + 1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + date1.getMinutes() + ':' + date1.getSeconds()
+    let date = new Date(d);
+    let myDate = date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日 ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
+    /*
+    * 做一个时间的校验，如果当时分秒小于10时在前面补0
+    * */
 
     /*
     * 做一个时间的校验，如果当时分秒小于10时在前面补0
     * */
-    if (date1.getMinutes() < 10 || date1.getSeconds() < 10) {
-        if (date1.getMinutes() < 10 && date1.getSeconds() < 10) {
-            myDate = date1.getFullYear() + '年' + (date1.getMonth() + 1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + '0' + date1.getMinutes() + ':' + '0' + date1.getSeconds()
-        } else if (date1.getMinutes() < 10) {
-            myDate = date1.getFullYear() + '年' + (date1.getMonth() + 1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + '0' + date1.getMinutes() + ':' + date1.getSeconds()
-        } else if (date1.getSeconds() < 10) {
-            myDate = date1.getFullYear() + '年' + (date1.getMonth() + 1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + date1.getMinutes() + ':' + '0' + date1.getSeconds()
+    if (date.getMinutes() < 10 || date.getSeconds() < 10) {
+        if (date.getMinutes() < 10 && date.getSeconds() < 10) {
+            myDate = date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日 ' + date.getHours() + ':' + '0' + date.getMinutes() + ':' + '0' + date.getSeconds()
+        } else if (date.getMinutes() < 10) {
+            myDate = date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日 ' + date.getHours() + ':' + '0' + date.getMinutes() + ':' + date.getSeconds()
+        } else if (date.getSeconds() < 10) {
+            myDate = date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日 ' + date.getHours() + ':' + date.getMinutes() + ':' + '0' + date.getSeconds()
         }
     } else {
-        myDate = date1.getFullYear() + '年' + (date1.getMonth() + 1) + '月' + date1.getDate() + '日 ' + date1.getHours() + ':' + date1.getMinutes() + ':' + date1.getSeconds()
+        myDate = date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日 ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
     }
 
     return myDate;

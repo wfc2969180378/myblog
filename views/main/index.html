@@ -1,36 +1,41 @@
 {%extends 'layout.html'%}
 
 {%block content%}
-{%for content in contents%}
-<section class="am-panel am-panel-primary rankBox">
-    <div class="am-panel-hd"><h1 style="font-size: 16px;">{{content.title}}</h1></div>
-    <main class="am-panel-bd">
-        <p class="am-article-meta">
-            <article data-am-widget="paragraph"
-                     class="am-paragraph am-paragraph-default"
-                     data-am-paragraph="{ tableScrollable: true, pureview: true }"
-                     style="font-size: 16px;margin-top: -30px;"
-            >
-        <p class="colDefault" style="font-size: 16px;">
-            作者：<span class="colInfo">{{content.user.name}}</span> &nbsp;&nbsp;
-            时间：<span class="colInfo">{{content.addTime|date('Y年m月d日 H:i:s', -8*60)}}</span>
-            阅读：<span class="colInfo">{{content.views}}</span>&nbsp;&nbsp;
-            评论：<span class="colInfo">{{content.comments.length}}</span>&nbsp;&nbsp;
-            点赞：<span class="colInfo">{{content.supports+1}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-            字数：<span class="colInfo">{{content.content.length}}</span>&nbsp;&nbsp;
-        </p>
-        <dfn><p style="font-size: 14px;">{{content.description}}</p></dfn>
-        </article>
+<div class="rank-Box" style="height: 100%;
+width:100%;position: absolute ;left: 0;overflow: hidden">
+    <ul>
+        {%for content in contents%}
+        <li class="am-panel am-panel-primary">
+                    <div class="am-panel-hd"><h1 style="font-size: 16px;">{{content.title}}</h1></div>
+                    <main class="am-panel-bd">
+                        <p class="am-article-meta">
+                            <article data-am-widget="paragraph"
+                                     class="am-paragraph am-paragraph-default"
+                                     data-am-paragraph="{ tableScrollable: true, pureview: true }"
+                                     style="font-size: 16px;margin-top: -30px;"
+                            >
+                        <p class="colDefault" style="font-size: 16px;">
+                            作者：<span class="colInfo">{{content.user.name}}</span> &nbsp;&nbsp;
+                            时间：<span class="colInfo">{{content.addTime|date('Y年m月d日 H:i:s', -8*60)}}</span>
+                            阅读：<span class="colInfo">{{content.views}}</span>&nbsp;&nbsp;
+                            评论：<span class="colInfo">{{content.comments.length}}</span>&nbsp;&nbsp;
+                            点赞：<span class="colInfo">{{content.supports+1}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                            字数：<span class="colInfo">{{content.content.length}}</span>&nbsp;&nbsp;
+                        </p>
+                        <dfn><p style="font-size: 14px;">{{content.description}}</p></dfn>
+                        </article>
 
-        </p>
-    </main>
-    <footer class="am-panel-footer">
-        <div class="function" style="text-align: right"><a href="/view?contentId={{content.id}}"
-                                                           class="am-btn am-btn-primary" style="color: #fff;">阅读全文</a>
-        </div>
-    </footer>
-</section>
-{%endfor%}
+                        </p>
+                    </main>
+                    <footer class="am-panel-footer">
+                        <div class="function" style="text-align: right"><a href="/view?contentId={{content.id}}"
+                                                                           class="am-btn am-btn-primary" style="color: #fff;">阅读全文</a>
+                        </div>
+                    </footer>
+        </li>
+        {%endfor%}
+    </ul>
+</div>
 
 <div class="pager">
     <ul class="clear">
@@ -46,7 +51,7 @@
         </li>
 
         {%if pages > 0%}
-        <li>
+        <li class="center">
             <strong>{{page}} / {{pages}}</strong>
         </li>
         {%endif%}
