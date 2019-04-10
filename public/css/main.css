@@ -366,11 +366,9 @@ dfn {
  * 分页
  */
 .pager {
-  padding: 20px;
-  margin-bottom: 30px;
-  background: #fff;
-  position: fixed;
-  bottom: 0px;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
 }
 .pager ul {
   list-style: none;
@@ -381,8 +379,9 @@ dfn {
 }
 .pager ul .view_center {
   position: absolute;
-  left: 142px;
-  top: -46px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -48px;
   font-size: 16px;
   width: 100px;
   color: purple;
@@ -398,9 +397,8 @@ dfn {
 }
 .pager .previous {
   position: absolute;
-  left: 10px;
-  top: -47px;
-  width: 102px;
+  left: 5px;
+  top: -48px;
 }
 
 .pager .previous>a, .pager .previous>span {
@@ -408,9 +406,8 @@ dfn {
 }
 .pager .next {
   position: absolute;
-  left: 250px;
+  right: 5px;
   top: -48px;
-  width: 100px;
 }
 .pager .next span {
   display: inline-block;
@@ -422,9 +419,9 @@ dfn {
 
 .pager .center {
   position: absolute;
-  left: 150px;
+  left: 50%;
+  transform: translateX(-50%);
   top: -40px;
-  width: 105px;
 }
 .pager .center strong {
   color: purple;
@@ -508,4 +505,14 @@ footer .fotBox span {
   top: 220px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.am-u-sm-10 input {
+  height: 32px !important;
+  font-size: 14px !important;
+}
+.am-form-label > img {
+  height: 25px;
+  width: 25px;
+  margin-top: -3px;
 }

@@ -15,6 +15,7 @@ $('#messageBtn').on('click', function () {
         success: function (responseData) {
             $('#messageContent').val('');
             renderComment();
+            alert('提交成功');
             window.location.reload();
             comments = responseData.data.comments.reverse();
         }
