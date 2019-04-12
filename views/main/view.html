@@ -3,7 +3,7 @@
 {%block content%}
 
 <div class="rank-Box"style="height: 100%;
-width:100%;position: absolute;left: 0;top: 300px;overflow: hidden">
+width:100%;position: absolute;left: 0;top: 78%;overflow: hidden">
    <div>
        <article data-am-widget="paragraph"
                 class="am-paragraph am-paragraph-default"
@@ -72,24 +72,16 @@ width:100%;position: absolute;left: 0;top: 300px;overflow: hidden">
            <article class="am-comment" style="padding: 10px">
                <div class="am-comment-main">
                    <header class="am-comment-hd">
-                       <!--<h3 class="am-comment-title">评论标题</h3>-->
                        <div class="am-comment-meta">
                            <a href="#link-to-user" class="am-comment-author">{{userInfo.name}}</a>
                            <textarea rows="10" required class="am-comment-meta" id="messageContent"
-
-                                     style="border:0;border-radius:5px;
-                     background-color: rgba(255,255,255,.98);width: 100%;
-                    height: 200px;padding: 10px; white-space: pre;overflow: auto;color: #3c3c3c;
-"
-                                     placeholder="请输入您的评论内容"
-
-                           ></textarea>
-
+                             style="border:0;border-radius:5px;
+                             background-color: rgba(255,255,255,.98);width: 100%;
+                             height: 200px;padding: 10px; white-space: pre;overflow: hidden;color: #3c3c3c;"
+                                  placeholder="请输入您的评论内容"></textarea>
                        </div>
                    </header>
-                   <div id="contentLength"
-                        style="position: absolute;right: 20px;bottom: 85px;"
-                   >
+                   <div id="contentLength">
                        <span>0/140</span>
                    </div>
                    <div class="am-comment-bd" style="height: 45px;line-height: 45px;">
@@ -111,11 +103,8 @@ width:100%;position: absolute;left: 0;top: 300px;overflow: hidden">
            </p>
            {%endif%}
 
-           <div class="messageList rankBox"
-           >
-               <div>
-
-               </div>
+           <div class="messageList rankBox">
+               <div></div>
            </div>
 
            <div class="pager">
@@ -129,17 +118,6 @@ width:100%;position: absolute;left: 0;top: 300px;overflow: hidden">
                    </li>
                </ul>
            </div>
-
-
-           <!--<div class="messageList">-->
-           <!--<div class="messageBox"><p>还没有留言</p></div>-->
-           <!--</div>-->
-
-           <!--<div class="messageList" style="display: block;">-->
-           <!--<div class="messageBox">-->
-           <!--<p class="name clear"><span class="fl">admin</span><span class="fr">2016年07月29日 17:24:01</span></p><p>哈哈</p>-->
-           <!--</div>-->
-           <!--</div>-->
 
        </div>
    </div>
@@ -155,20 +133,25 @@ width:100%;position: absolute;left: 0;top: 300px;overflow: hidden">
         $messageContent.bind('input propertychange', 'textarea', function () {
             let curLength = $messageContent.val().trim().length;
             console.log(curLength);
+
             if (curLength > 140) {
                 let num = $messageContent.val().trim().substr(0, 140);
                 $messageContent.val(num);
                 alert('您输入的评论字数超出限制了');
             }
             if (curLength === 0) {
-                $contentLength.text('0 / 140');
+                $contentLength.text('0 / 140').css({
+                    "color":"black",
+                    "font-weight":"normal"
+                });
             } else {
-                $contentLength.text(($messageContent).val().trim().length + '/140');
-
+                let length = ($messageContent).val().trim().length
+                $contentLength.text(length + '/140').css({
+                    "color":"purple",
+                    "font-weight":"bold"
+                });
             }
-
         });
-
     })
 </script>
 {%endblock%}

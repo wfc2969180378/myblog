@@ -516,3 +516,9 @@ footer .fotBox span {
   width: 25px;
   margin-top: -3px;
 }
+#contentLength {
+  position: absolute;
+  right: 20px;
+  bottom: 85px;
+}
+
