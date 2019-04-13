@@ -282,7 +282,7 @@
         <ul class="am-navbar-nav am-cf am-avg-sm-4">
             <li>
                 <a href="http://localhost:8082/" class="">
-                    <img src="../../public/images/index_icon.png" alt="首页"/>
+                    <img src="../../public/images/index_icon.png" class="bg-index_icon" alt="首页"/>
                     <span class="am-navbar-label">首页</span>
                 </a>
             </li>
@@ -308,11 +308,18 @@
 <script type="text/javascript" src="/public/js/swipeslider.min.js"></script>
 <script src="https://unpkg.com/better-scroll/dist/bscroll.min.js"></script>
 <script type="application/javascript">
-
     var rankBox = document.querySelector('.rank-Box');
     var scroll = new BScroll(rankBox, {
         click: true
     })
+</script>
+<script>
+    $(function() {
+        $('.my-scrollspy').scrollspy({
+            animation: 'fade',
+            delay: 500
+        })
+    });
 </script>
 <script type="text/javascript">
     $(window).load(() => {
@@ -332,6 +339,9 @@
     });
 </script>
 <script type="text/javascript">
+    // $(".am-panel-primary").click(function () {
+    //     window.location('/view?contentId=5c8e0f4b574ee941d02e7781');
+    // })
     $("#comments_list li.comments .useful").click(function () {
         let $likeNum = $(this).find('.like_num');
         let num = +$likeNum.text();
@@ -342,27 +352,6 @@
             confirm("你已经点过了");
         }
     });
-    // $(window).scroll(function () {
-    //     // 获取垂直滚动的距离
-    //     let scrollTop = $(document).scrollTop();
-    //     if (scrollTop >= 258) {
-    //         $('#header_pos').css({
-    //             'position': 'fixed',
-    //             'top': '0',
-    //             'height': '25px',
-    //             'width': '100%',
-    //             'display': 'block'
-    //         });
-    //         $('#doc-topbar-collapse-4').show();
-    //     } else {
-    //         $('#header_pos').css({
-    //             "position":"relative",
-    //             "top":"inherit",
-    //             'height': '100%',
-    //             'width': '100%'
-    //         });
-    //     }
-    // })
 </script>
 
 

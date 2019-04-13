@@ -108,9 +108,14 @@ button {
 }
 .fl {
   float: left;
+  position: absolute;
+  left: 51px;
+  top: -2px;
+  font-size: 14px;
 }
 .fr {
   float: right;
+  font-size: 14px;
 }
 .clear:after,
 .clear:before {
@@ -223,8 +228,10 @@ main .mainLeft .textBox {
   padding: 10px;
 }
 main .mainLeft .em {
-  font-size: 12px;
   float: right;
+  font-weight: bold;
+  font-size: 14px;
+  padding-right: 10px;
 }
 main .mainLeft .message textarea {
   float: left;
@@ -251,6 +258,8 @@ main .mainLeft .messageBox {
   padding: 5px 10px 10px;
   margin-bottom: 10px;
   text-align: left;
+  position: relative;
+  border-bottom: 1px solid #eee;
 }
 main .mainLeft .messageBox .name {
   border-bottom: 1px solid #fff;
@@ -520,5 +529,18 @@ footer .fotBox span {
   position: absolute;
   right: 20px;
   bottom: 85px;
+}
+
+.avatar {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  left: 13px;
+}
+.content_p {
+  background: #fcfcfc;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
 

@@ -71,9 +71,9 @@ function renderComment() {
     } else {
         let html = '';
         for (let i = start; i < end; i++) {
-            html += '<div class="messageBox" style="border-bottom: 1px solid rgb(105,87,207)">' +
-                '<p class="name clear"><span class="fl" style="color: rgb(105,87,207);">' + comments[i].username + '</span><span class="fr">' + formatDate(comments[i].postTime) + '</span></p><p ' +
-                'style="background: #fcfcfc;padding: 10px;font-size: 14px;">' + comments[i].content + '</p>' +
+            html += '<div class="messageBox">' +
+                '<p class="name clear"><img class="avatar" src="/public/images/avatar.png"/><span class="fl" style="color: rgb(105,87,207);">' + comments[i].username + '</span><span class="fr">' + formatDate(comments[i].postTime) + '</span></p><p ' +
+                'class="content_p">' + comments[i].content + '</p>' +
                 '</div>';
         }
         $('.messageList').html(html);

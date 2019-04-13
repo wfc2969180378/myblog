@@ -5,8 +5,12 @@
 width:100%;position: absolute ;left: 0;overflow: hidden">
     <ul>
         {%for content in contents%}
-        <li class="am-panel am-panel-primary">
-                    <div class="am-panel-hd"><h1 style="font-size: 16px;">{{content.title}}</h1></div>
+            {%if content.length === 0 %}
+                <li style="background: red;color: #0a628f">dd</li>
+            {% else %}
+            <li class="am-panel am-panel-primary my-scrollspy">
+                <a href="/view?contentId={{content.id}}">
+                    <div class="am-panel-hd" style="background: rgb(105,87,207);"><h1 style="font-size: 16px;">{{content.title}}</h1></div>
                     <main class="am-panel-bd">
                         <p class="am-article-meta">
                             <article data-am-widget="paragraph"
@@ -28,11 +32,14 @@ width:100%;position: absolute ;left: 0;overflow: hidden">
                         </p>
                     </main>
                     <footer class="am-panel-footer">
-                        <div class="function" style="text-align: right"><a href="/view?contentId={{content.id}}"
-                                                                           class="am-btn am-btn-primary" style="color: #fff;">阅读全文</a>
+                        <div class="function" style="text-align: right">
+                            <a href="/view?contentId={{content.id}}"
+                               class="am-btn am-btn-primary" style="color: #fff;">阅读全文</a>
                         </div>
                     </footer>
-        </li>
+                </a>
+            </li>
+            {%endif%}
         {%endfor%}
     </ul>
 </div>
