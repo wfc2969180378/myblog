@@ -2,8 +2,7 @@
 
 {%block content%}
 
-<div class="rank-Box"style="height: 100%;
-width:100%;position: absolute;left: 0;top: 78%;overflow: hidden">
+<div class="rank-Box">
    <div>
        <article data-am-widget="paragraph"
                 class="am-paragraph am-paragraph-default"
@@ -67,6 +66,9 @@ width:100%;position: absolute;left: 0;top: 78%;overflow: hidden">
                     <span class="em">一共有 <em id="messageCount">0</em> 条评论</span>
                </nav>
            </div>
+
+
+
            {% if userInfo._id %}
            <article class="am-comment" style="padding: 10px">
                <div class="am-comment-main">
@@ -86,7 +88,7 @@ width:100%;position: absolute;left: 0;top: 78%;overflow: hidden">
                    <div class="am-comment-bd" style="height: 45px;line-height: 45px;">
                        <input type="hidden" id="contentId" value="{{content.id}}">
                    </div>
-                   <button id="messageBtn" class="am-btn am-btn-success am-btn-sm"
+                   <button id="messageBtn" class="am-btn am-btn-success am-btn-sm" disabled="disabled"
                            style="position: absolute;left: 15px;bottom: 70px;width: 80px;
                     border-radius: 3px"
                    >畅所欲言
@@ -101,18 +103,18 @@ width:100%;position: absolute;left: 0;top: 78%;overflow: hidden">
                <a href="/" style="color: blueviolet">返回首页</a>
            </p>
            {%endif%}
-
+           <h4 class="new_comments">最新评论</h4>
            <div class="messageList rankBox">
                <div></div>
            </div>
 
            <div class="pager">
                <ul class="clear">
-                   <li class="previous">
+                   <li class="previous view_previous">
                        <a href="">上一页</a>
                    </li>
                    <li class="view_center"></li>
-                   <li class="next">
+                   <li class="next view_next">
                        <a href="">下一页</a>
                    </li>
                </ul>
@@ -128,6 +130,7 @@ width:100%;position: absolute;left: 0;top: 78%;overflow: hidden">
     $(function () {
         let $messageContent = $('#messageContent');
         let $contentLength = $('#contentLength');
+        let $messageBtn = $('#messageBtn');
 
         $messageContent.bind('input propertychange', 'textarea', function () {
             let curLength = $messageContent.val().trim().length;
@@ -136,6 +139,7 @@ width:100%;position: absolute;left: 0;top: 78%;overflow: hidden">
             if (curLength > 140) {
                 let num = $messageContent.val().trim().substr(0, 140);
                 $messageContent.val(num);
+
                 alert('您输入的评论字数超出限制了');
             }
             if (curLength === 0) {
@@ -143,12 +147,14 @@ width:100%;position: absolute;left: 0;top: 78%;overflow: hidden">
                     "color":"black",
                     "font-weight":"normal"
                 });
-            } else {
+                $messageBtn.attr("disabled", true);
+            } else if(curLength > 0) {
                 let length = ($messageContent).val().trim().length
                 $contentLength.text(length + '/140').css({
                     "color":"purple",
                     "font-weight":"bold"
                 });
+                $messageBtn.attr("disabled", false);
             }
         });
     })

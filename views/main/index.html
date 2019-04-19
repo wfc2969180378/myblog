@@ -1,8 +1,25 @@
 {%extends 'layout.html'%}
 
 {%block content%}
+<!--头部导航区域-->
+
+
+
+<button
+        type="button"
+        class="am-btn am-btn-primary"
+        data-am-modal="{target: '#my-popup', closeViaDimmer: 0}">
+    {% if userInfo._id %}
+    <!--btn btn-primary btn-large theme-login-->
+    <a class="" href="javascript:">{{userInfo.username}}&nbsp;&nbsp;&nbsp;您好!</a>
+    {%else%}
+    <!--btn btn-primary btn-large theme-login-->
+    <a class="" href="javascript:">您尚未登录！请您登录</a>
+    {%endif%}
+</button>
 <div class="rank-Box" style="height: 100%;
-width:100%;position: absolute ;left: 0;overflow: hidden">
+width:100%;position: absolute ;left: 0;overflow: hidden;
+margin-top: 44px">
     <ul>
         {%for content in contents%}
             {%if content.length === 0 %}

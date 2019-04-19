@@ -63,11 +63,11 @@ router.get('/view', (req, res) => {
 
     let contentId = req.query.contentId || '';
 
-    Content.findOne({
+        Content.findOne({
         _id: contentId
     }).then((content) => {
         data.content = content;
-
+        data.comments = content.comments
         content.views++;
         content.supports++;
         content.save();

@@ -82,7 +82,7 @@ router.get('/user', (req, res) => {
 
 router.get('/user/delete', (req, res) => {
 
-    //获取要删除的用户的id
+    //　获取要删除的用户的id
     let id = req.query.id || '';
 
     User.remove({
@@ -93,9 +93,7 @@ router.get('/user/delete', (req, res) => {
             message: '删除成功',
             url: '/admin/user'
         });
-
     });
-
 });
 
 
@@ -296,6 +294,8 @@ router.get('/category/delete', (req, res) => {
     });
 
 });
+
+
 
 /*
 * 内容首页

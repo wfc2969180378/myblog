@@ -259,7 +259,7 @@ main .mainLeft .messageBox {
   margin-bottom: 10px;
   text-align: left;
   position: relative;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ccc;
 }
 main .mainLeft .messageBox .name {
   border-bottom: 1px solid #fff;
@@ -389,8 +389,8 @@ dfn {
 .pager ul .view_center {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  top: -48px;
+  transform: translate(-50%,60%);
+  top: 30%;
   font-size: 16px;
   width: 100px;
   color: purple;
@@ -407,8 +407,10 @@ dfn {
 .pager .previous {
   position: absolute;
   left: 5px;
-  top: -48px;
+  top: 50%;
+  transform: translateY(-50%);
 }
+
 
 .pager .previous>a, .pager .previous>span {
     float: left;
@@ -416,7 +418,8 @@ dfn {
 .pager .next {
   position: absolute;
   right: 5px;
-  top: -48px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .pager .next span {
   display: inline-block;
@@ -429,8 +432,8 @@ dfn {
 .pager .center {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  top: -40px;
+  transform: translate(-50%,-50%);
+  top: 50%;
 }
 .pager .center strong {
   color: purple;
@@ -544,3 +547,16 @@ footer .fotBox span {
   font-weight: bold;
 }
 
+.view_previous {
+  top: 30% !important;
+  transform: translateY(40%) !important;
+}
+.view_next {
+  top: 30%  !important;
+  transform: translateY(40%) !important;
+}
+.new_comments {
+  padding: 15px;
+  font-size: 18px;
+  border-bottom: 1px solid #ccc;
+}

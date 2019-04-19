@@ -18,6 +18,9 @@ $('#messageBtn').on('click', function () {
             alert('提交成功');
             window.location.reload();
             comments = responseData.data.comments.reverse();
+        },
+        fail: function (error) {
+            alert(error);
         }
     })
 });

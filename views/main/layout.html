@@ -51,8 +51,10 @@
 <body>
 
 <div>
-    <!--头部导航区域-->
-    <header class="am-topbar am-topbar-inverse" id="header_pos" style="height: 100%;margin-bottom: -10px;">
+    <header class="am-topbar am-topbar-inverse" id="header_pos" style="
+    height: 100%;
+    margin-bottom: -10px;
+    width: 100%;">
         <div class="am-container">
             <h1 class="am-topbar-brand">
                 <a class="navbar-brand" href="/">
@@ -90,6 +92,11 @@
         </div>
     </header>
 
+    <!--左边侧边栏-->
+    <div class="blog-silder">
+
+    </div>
+
     <!--轮播图区域-->
     <section>
         <figure id="full_feature" class="swipslider">
@@ -115,24 +122,6 @@
             </ul>
         </figure>
     </section>
-
-    <!--左边侧边栏-->
-    <div class="blog-silder">
-
-    </div>
-    <button
-            type="button"
-            class="am-btn am-btn-primary"
-            data-am-modal="{target: '#my-popup', closeViaDimmer: 0}">
-        {% if userInfo._id %}
-        <!--btn btn-primary btn-large theme-login-->
-        <a class="" href="javascript:">{{userInfo.username}}&nbsp;&nbsp;&nbsp;您好!</a>
-        {%else%}
-        <!--btn btn-primary btn-large theme-login-->
-        <a class="" href="javascript:">您尚未登录！请您登录</a>
-        {%endif%}
-    </button>
-
     <div class="am-modal am-modal-no-btn am-animation-fade" tabindex="-1" id="my-popup">
         <div class="am-modal-dialog" style="position: absolute;top: 0%;left: 0;width: 100%;
     height: 100%;background: #eeeeee;">
@@ -339,9 +328,6 @@
     });
 </script>
 <script type="text/javascript">
-    // $(".am-panel-primary").click(function () {
-    //     window.location('/view?contentId=5c8e0f4b574ee941d02e7781');
-    // })
     $("#comments_list li.comments .useful").click(function () {
         let $likeNum = $(this).find('.like_num');
         let num = +$likeNum.text();
