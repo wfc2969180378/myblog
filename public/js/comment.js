@@ -15,8 +15,8 @@ $('#messageBtn').on('click', function () {
         success: function (responseData) {
             $('#messageContent').val('');
             renderComment();
-            alert('提交成功');
-            window.location.reload();
+            commentSuccess()
+
             comments = responseData.data.comments.reverse();
         },
         fail: function (error) {
@@ -84,13 +84,15 @@ function renderComment() {
 
 }
 
+function commentSuccess() {
+    let $alert = $('#alert')
+    $alert.css('display','block')
+    window.location.reload();
+}
+
 function formatDate(d) {
     let date = new Date(d);
     let myDate = date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日 ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
-    /*
-    * 做一个时间的校验，如果当时分秒小于10时在前面补0
-    * */
-
     /*
     * 做一个时间的校验，如果当时分秒小于10时在前面补0
     * */

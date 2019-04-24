@@ -531,7 +531,7 @@ footer .fotBox span {
 #contentLength {
   position: absolute;
   right: 20px;
-  bottom: 85px;
+  bottom: 61px;
 }
 
 .avatar {
@@ -559,4 +559,16 @@ footer .fotBox span {
   padding: 15px;
   font-size: 18px;
   border-bottom: 1px solid #ccc;
+}
+
+.am-alert-success {
+  display: none;
+  position: absolute;
+  top: 605px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4bad4b !important;
+  border-color: #4bad4b !important;
+  color: #fff !important;
+  width: 25% !important;
 }

@@ -89,7 +89,7 @@
                        <input type="hidden" id="contentId" value="{{content.id}}">
                    </div>
                    <button id="messageBtn" class="am-btn am-btn-success am-btn-sm" disabled="disabled"
-                           style="position: absolute;left: 15px;bottom: 70px;width: 80px;
+                           style="position: absolute;left: 15px;bottom: 6px;width: 80px;
                     border-radius: 3px"
                    >畅所欲言
                    </button>
@@ -103,6 +103,10 @@
                <a href="/" style="color: blueviolet">返回首页</a>
            </p>
            {%endif%}
+           <div class="am-alert am-alert-success" id="alert"  data-am-alert>
+               <button type="button" class="am-close" id="am-close">&times;</button>
+               <p>提交成功</p>
+           </div>
            <h4 class="new_comments">最新评论</h4>
            <div class="messageList rankBox">
                <div></div>
